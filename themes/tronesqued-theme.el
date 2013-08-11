@@ -1,8 +1,8 @@
-;;; tron-theme.el --- Espresso Tutti Colori port for Emacs
+;;; tronesqued-theme.el --- Espresso Tutti Colori port for Emacs
 
 ;; Author: Aurélien Bottazini Kühl <aurelienbottazini.com>
 
-(deftheme tronesque
+(deftheme tronesqued
   "Theme based on Tron universe. Colors are inspired / taken from the movies.
 More information on Tron: https://en.wikipedia.org/wiki/Tron")
 
@@ -24,7 +24,7 @@ More information on Tron: https://en.wikipedia.org/wiki/Tron")
       (green "#68f6cb"))
 
   (custom-theme-set-faces
-   'tronesque
+   'tronesqued
 
    `(button ((t (:background ,magenta :foreground ,base00 :box (:line-width 2 :style released-button)))))
    `(button ((t (:background ,magenta :foreground ,base00 :box (:line-width 2 :style released-button)))))
@@ -121,7 +121,7 @@ More information on Tron: https://en.wikipedia.org/wiki/Tron")
    `(ac-selection-face ((t (:background ,base02)))))
 
   (custom-theme-set-variables
-   'tronesque
+   'tronesqued
 
    `(ansi-color-names-vector
      ;; black, red, green, yellow, blue, magenta, cyan, white
@@ -131,53 +131,53 @@ More information on Tron: https://en.wikipedia.org/wiki/Tron")
      [unspecified ,base00 ,red ,green ,yellow ,blue ,magenta ,cyan ,base04]))
 
 
-  (setq-default
-   mode-line-format
-   '(; Position, including warning for 80 columns
-     (:propertize "%4l:" face mode-line-position-face)
-     (:eval (propertize "%3c" 'face
-                        (if (>= (current-column) 80)
-                            'mode-line-80col-face
-                          'mode-line-position-face)))
-                                        ; emacsclient [default -- keep?]
-     mode-line-client
-     " "
-                                        ; read-only or modified status
-     (:eval
-      (cond (buffer-read-only
-             (propertize " RO " 'face 'mode-line-read-only-face))
-            ((buffer-modified-p)
-             (propertize " ** " 'face 'mode-line-modified-face))
-            (t (propertize " == " 'face 'mode-line-clean-face))))
-     (:propertize " "
-                  face mode-line-folder-face)
-                                        ; directory and
-                                        ; buffer/file name
+  ;; (setq-default
+  ;;  mode-line-format
+  ;;  '(; Position, including warning for 80 columns
+  ;;    (:propertize "%4l:" face mode-line-position-face)
+  ;;    (:eval (propertize "%3c" 'face
+  ;;                       (if (>= (current-column) 80)
+  ;;                           'mode-line-80col-face
+  ;;                         'mode-line-position-face)))
+  ;;                                       ; emacsclient [default -- keep?]
+  ;;    mode-line-client
+  ;;    " "
+  ;;                                       ; read-only or modified status
+  ;;    (:eval
+  ;;     (cond (buffer-read-only
+  ;;            (propertize " RO " 'face 'mode-line-read-only-face))
+  ;;           ((buffer-modified-p)
+  ;;            (propertize " ** " 'face 'mode-line-modified-face))
+  ;;           (t (propertize " == " 'face 'mode-line-clean-face))))
+  ;;    (:propertize " "
+  ;;                 face mode-line-folder-face)
+  ;;                                       ; directory and
+  ;;                                       ; buffer/file name
 
-     (:propertize (:eval (shorten-directory default-directory 30))
-                  face mode-line-folder-face)
-     (:propertize "%b "
-                  face mode-line-filename-face)
-                                        ; mode indicators: vc, recursive edit, major mode, minor modes, process, global
-     ;; (vc-mode vc-mode)
+  ;;    (:propertize (:eval (shorten-directory default-directory 30))
+  ;;                 face mode-line-folder-face)
+  ;;    (:propertize "%b "
+  ;;                 face mode-line-filename-face)
+  ;;                                       ; mode indicators: vc, recursive edit, major mode, minor modes, process, global
+  ;;    ;; (vc-mode vc-mode)
 
-     (:propertize " "
-                  face mode-line-mode-face)
-     (:propertize mode-name
-                  face mode-line-mode-face)
-     (:propertize " "
-                  face mode-line-mode-face)
+  ;;    (:propertize " "
+  ;;                 face mode-line-mode-face)
+  ;;    (:propertize mode-name
+  ;;                 face mode-line-mode-face)
+  ;;    (:propertize " "
+  ;;                 face mode-line-mode-face)
 
-     (:eval (propertize (format-mode-line minor-mode-alist)
-                        'face 'mode-line-minor-mode-face))
-                                        ; narrow [default -- keep?]
-     ;; " %n "
+  ;;    (:eval (propertize (format-mode-line minor-mode-alist)
+  ;;                       'face 'mode-line-minor-mode-face))
+  ;;                                       ; narrow [default -- keep?]
+  ;;    ;; " %n "
 
-     (:propertize mode-line-process
-                  face mode-line-process-face)
-     (global-mode-string global-mode-string)
-     "    "
-     ))
+  ;;    (:propertize mode-line-process
+  ;;                 face mode-line-process-face)
+  ;;    (global-mode-string global-mode-string)
+  ;;    "    "
+  ;;    ))
 
   ;; Helper function
   (defun shorten-directory (dir max-length)
@@ -195,70 +195,77 @@ More information on Tron: https://en.wikipedia.org/wiki/Tron")
 
   ;; Extra mode line faces
 
-  (make-face 'mode-line-read-only-face)
-  (make-face 'mode-line-modified-face)
-  (make-face 'mode-line-clean-face)
-  (make-face 'mode-line-folder-face)
-  (make-face 'mode-line-filename-face)
-  (make-face 'mode-line-position-face)
-  (make-face 'mode-line-mode-face)
-  (make-face 'mode-line-minor-mode-face)
-  (make-face 'mode-line-process-face)
-  (make-face 'mode-line-80col-face)
+  ;; (make-face 'mode-line-read-only-face)
+  ;; (make-face 'mode-line-modified-face)
+  ;; (make-face 'mode-line-clean-face)
+  ;; (make-face 'mode-line-folder-face)
+  ;; (make-face 'mode-line-filename-face)
+  ;; (make-face 'mode-line-position-face)
+  ;; (make-face 'mode-line-mode-face)
+  ;; (make-face 'mode-line-minor-mode-face)
+  ;; (make-face 'mode-line-process-face)
+  ;; (make-face 'mode-line-80col-face)
+
+  ;; (set-face-attribute 'mode-line nil
+  ;;                     :foreground "#081724" :background "#d3f9ee"
+  ;;                     :inverse-video nil
+  ;;                     :box '(:line-width 6 :color "#d3f9ee"  :style nil))
+  ;; (set-face-attribute 'mode-line-inactive nil
+  ;;                     :foreground "#081724" :background "#1d5483"
+  ;;                     :inverse-video nil
+  ;;                     :box '(:line-width 6 :color "#1d5483" :style nil))
+
+  ;; (set-face-attribute 'mode-line-read-only-face nil
+  ;;                     :inherit 'mode-line-face
+  ;;                     :foreground "#ff694d")
+  ;; (set-face-attribute 'mode-line-modified-face nil
+  ;;                     :inherit 'mode-line-face
+  ;;                     :background "#ff694d"
+  ;;                     :box '(:line-width 6 :color "#ff694d" :style nil))
+  ;; (set-face-attribute 'mode-line-clean-face nil
+  ;;                     :inherit 'mode-line-face
+  ;;                     :background "#68f6cb"
+  ;;                     :box '(:line-width 6 :color "#68f6cb" :style nil))
+  ;; (set-face-attribute 'mode-line-folder-face nil
+  ;;                     :inherit 'mode-line-face
+  ;;                     :foreground "#081724"
+  ;;                     :background "#96a5d9"
+  ;;                     :box '(:line-width 6 :color "#96a5d9" :style nil)
+  ;;                     )
+  ;; (set-face-attribute 'mode-line-filename-face nil
+  ;;                     :inherit 'mode-line-face
+  ;;                     :foreground "#1d5483"
+  ;;                     :background "#96a5d9"
+  ;;                     :box '(:line-width 6 :color "#96a5d9" :style nil)
+  ;;                     :weight 'bold)
+  ;; (set-face-attribute 'mode-line-position-face nil
+  ;;                     :inherit 'mode-line-face
+  ;;                     :height 100)
+  ;; (set-face-attribute 'mode-line-mode-face nil
+  ;;                     :inherit 'mode-line-face
+  ;;                     :foreground "#081724"
+  ;;                     :background "#f5b55f"
+  ;;                     :box '(:line-width 6 :color "#f5b55f" :style nil)
+  ;;                     )
+  ;; (set-face-attribute 'mode-line-minor-mode-face nil
+  ;;                     :foreground "#081724"
+  ;;                     :height 110)
+  ;; (set-face-attribute 'mode-line-process-face nil
+  ;;                     :inherit 'mode-line-face
+  ;;                     :foreground "#68f6cb")
+  ;; (set-face-attribute 'mode-line-80col-face nil
+  ;;                     :inherit 'mode-line-position-face
+  ;;                     :foreground "black" :background "#eab700"
+  ;;                     :box '(:line-width 6 :color "#eab700" :style nil)
+  ;;                     )
 
   (set-face-attribute 'mode-line nil
                       :foreground "#081724" :background "#d3f9ee"
-                      :inverse-video nil
-                      :box '(:line-width 6 :color "#d3f9ee"  :style nil))
+                      :box '(:color "#d3f9ee"))
   (set-face-attribute 'mode-line-inactive nil
                       :foreground "#081724" :background "#1d5483"
-                      :inverse-video nil
-                      :box '(:line-width 6 :color "#1d5483" :style nil))
-
-  (set-face-attribute 'mode-line-read-only-face nil
-                      :inherit 'mode-line-face
-                      :foreground "#ff694d")
-  (set-face-attribute 'mode-line-modified-face nil
-                      :inherit 'mode-line-face
-                      :background "#ff694d"
-                      :box '(:line-width 6 :color "#ff694d" :style nil))
-  (set-face-attribute 'mode-line-clean-face nil
-                      :inherit 'mode-line-face
-                      :background "#68f6cb"
-                      :box '(:line-width 6 :color "#68f6cb" :style nil))
-  (set-face-attribute 'mode-line-folder-face nil
-                      :inherit 'mode-line-face
-                      :foreground "#081724"
-                      :background "#96a5d9"
-                      :box '(:line-width 6 :color "#96a5d9" :style nil)
-                      )
-  (set-face-attribute 'mode-line-filename-face nil
-                      :inherit 'mode-line-face
-                      :foreground "#1d5483"
-                      :background "#96a5d9"
-                      :box '(:line-width 6 :color "#96a5d9" :style nil)
-                      :weight 'bold)
-  (set-face-attribute 'mode-line-position-face nil
-                      :inherit 'mode-line-face
-                      :height 100)
-  (set-face-attribute 'mode-line-mode-face nil
-                      :inherit 'mode-line-face
-                      :foreground "#081724"
-                      :background "#f5b55f"
-                      :box '(:line-width 6 :color "#f5b55f" :style nil)
-                      )
-  (set-face-attribute 'mode-line-minor-mode-face nil
-                      :foreground "#081724"
-                      :height 110)
-  (set-face-attribute 'mode-line-process-face nil
-                      :inherit 'mode-line-face
-                      :foreground "#68f6cb")
-  (set-face-attribute 'mode-line-80col-face nil
-                      :inherit 'mode-line-position-face
-                      :foreground "black" :background "#eab700"
-                      :box '(:line-width 6 :color "#eab700" :style nil)
-                      )
-)
+                      :box '(:color "#1d5483"))
+  )
 
 ;;;###autoload
 (when load-file-name
@@ -266,5 +273,5 @@ More information on Tron: https://en.wikipedia.org/wiki/Tron")
                (file-name-as-directory (file-name-directory load-file-name))))
 
 
-(provide-theme 'tronesque)
-;;; tronesque-theme.el ends here
+(provide-theme 'tronesqued)
+;;; tronesqued-theme.el ends here
